@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sabian Stones | Premium Floor Tiling</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --gold: #D4AF37;
+            --dark-bg: #121212;
+            --card-bg: rgba(30, 30, 30, 0.65);
+            --text-light: #F5F5F5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            overflow-x: hidden;
+        }
+
+        /* --- HEADER & NAVIGATION --- */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 4%;
+            background: rgba(18, 18, 18, 0.95);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .logo h1 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            font-size: 24px;
+            letter-spacing: 2px;
+        }
+
+        .menu-btn {
+            background: none;
+            border: none;
+            color: var(--gold);
+            font-size: 28px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .menu-btn:hover {
+            transform: scale(1.1);
+        }
+
+        /* --- SLIDE-OUT MENU --- */
+        .side-nav {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 300px;
+            height: 100%;
+            background: rgba(15, 15, 15, 0.98);
+            border-left: 1px solid var(--gold);
+            box-shadow: -5px 0 25px rgba(0,0,0,0.8);
+            z-index: 2000;
+            transition: 0.4s ease-in-out;
+            padding: 80px 30px;
+        }
+
+        .side-nav.active {
+            right: 0;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            background: none;
+            border: none;
+            color: var(--gold);
+            font-size: 30px;
+            cursor: pointer;
+        }
+
+        .side-nav ul {
+            list-style: none;
+        }
+
+        .side-nav ul li {
+            margin: 25px 0;
+        }
+
+        .side-nav ul li a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 18px;
+            letter-spacing: 1px;
+            transition: 0.3s;
+            display: block;
+        }
+
+        .side-nav ul li a:hover {
+            color: var(--gold);
+            padding-left: 10px;
+        }
+
+        .side-nav .submenu {
+            padding-left: 15px;
+            margin-top: 10px;
+        }
+
+        .side-nav .submenu li {
+            margin: 12px 0;
+        }
+
+        .side-nav .submenu li a {
+            font-size: 15px;
+            opacity: 0.8;
+        }
+
+        /* --- HERO & INQUIRY FORM SECTION --- */
+        .hero-section {
+            padding: 140px 4% 60px 4%;
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(circle at center, #1e1e1e 0%, #121212 100%);
+        }
+
+        /* Translucent Form Container from your Book Sketch */
+        .inquiry-container {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 8px;
+            padding: 40px;
+            width: 100%;
+            max-width: 600px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            position: relative;
+        }
+
+        /* Decorative Gold Corner Lines */
+        .inquiry-container::before, .inquiry-container::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--gold);
+        }
+        .inquiry-container::before { top: 10px; left: 10px; border-right: none; border-bottom: none; }
+        .inquiry-container::after { bottom: 10px; right: 10px; border-left: none; border-top: none; }
+
+        .inquiry-container h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 22px;
+            letter-spacing: 1px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 13px;
+            color: #ccc;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 4px;
+            color: var(--text-light);
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 8px rgba(212, 175, 55, 0.3);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #D4AF37 0%, #AA820A 100%);
+            border: none;
+            border-radius: 4px;
+            color: #000;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            letter-spacing: 1px;
+            transition: 0.3s;
+            text-transform: uppercase;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+        }
+
+        /* --- TILE CATEGORIES SECTION --- */
+        .categories-section {
+            padding: 60px 4%;
+        }
+
+        .category-block {
+            margin-bottom: 60px;
+        }
+
+        .category-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            padding-bottom: 10px;
+        }
+
+        .category-header h3 {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            font-size: 22px;
+        }
+
+        .see-all-btn {
+            color: var(--gold);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            border: 1px solid var(--gold);
+            padding: 6px 16px;
+            border-radius: 20px;
+            transition: 0.3s;
+        }
+
+        .see-all-btn:hover {
+            background: var(--gold);
+            color: #000;
+        }
+
+        /* Horizontal Scroll Wrapper */
+        .horizontal-scroll {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            padding-bottom: 15px;
+            scroll-behavior: smooth;
+        }
+
+        /* Hide Scrollbar looks cleaner */
+        .horizontal-scroll::-webkit-scrollbar {
+            height: 6px;
+        }
+        .horizontal-scroll::-webkit-scrollbar-thumb {
+            background-color: var(--gold);
+            border-radius: 4px;
+        }
+
+        .tile-card {
+            min-width: 280px;
+            max-width: 280px;
+            background: #1a1a1a;
+            border-radius: 6px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .tile-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .tile-info {
+            padding: 15px;
+            text-align: center;
+        }
+
+        .tile-info p {
+            font-size: 15px;
+            color: #ddd;
+        }
+
+        /* --- FOOTER & CONTACT INFO --- */
+        footer {
+            background: #0a0a0a;
+            padding: 60px 4% 40px 4%;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 800px;
+            margin: 0auto;
+        }
+
+        .footer-logo {
+            font-family: 'Cinzel', serif;
+            color: var(--gold);
+            font-size: 26px;
+            margin-bottom: 20px;
+        }
+
+        .contact-details {
+            margin: 20px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            font-size: 15px;
+            color: #ccc;
+        }
+
+        .contact-details i {
+            color: var(--gold);
+            margin-right: 10px;
+        }
+
+        .copyright {
+            margin-top: 40px;
+            font-size: 12px;
+            color: #666;
+        }
+
+        /* --- FLOATING WHATSAPP BUTTON --- */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25D366;
+            color: #fff;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 32px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            z-index: 3000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <h1>SABIAN STONES</h1>
+        </div>
+        <button class="menu-btn" onclick="toggleMenu()"><i class="fa-solid fa-bars"></i></button>
+    </header>
+
+    <nav class="side-nav" id="sideNav">
+        <button class="close-btn" onclick="toggleMenu()"><i class="fa-solid fa-xmark"></i></button>
+        <ul>
+            <li>
+                <a href="#">PRODUCTS <i class="fa-solid fa-chevron-down" style="font-size: 12px;"></i></a>
+                <ul class="submenu">
+                    <li><a href="#">Limestone</a></li>
+                    <li><a href="#">Marble</a></li>
+                </ul>
+            </li>
+            <li><a href="#">GALLERY</a></li>
+            <li><a href="#">WHY US</a></li>
+            <li><a href="#contact">CONTACT</a></li>
+            <li><a href="tel:+1234567890" style="color: var(--gold); font-weight:600;"><i class="fa-solid fa-phone"></i> CALL NOW</a></li>
+            <li><a href="#contact" style="color: var(--gold); font-weight:600;"><i class="fa-solid fa-calendar-days"></i> BOOK APPOINTMENT</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero-section">
+        <div class="inquiry-container">
+            <h2>Luxury Tile Project Inquiry</h2>
+            <form action="#">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" placeholder="John Doe" required>
+                </div>
+                <div class="form-group">
+                    <label>Contact Number</label>
+                    <input type="tel" placeholder="+1 (555) 000-0000" required>
+                </div>
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" placeholder="john@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Project Description</label>
+                    <textarea rows="4" placeholder="Describe your dream room or scope of tiling work..." required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Submit Details</button>
+            </form>
+        </div>
+    </section>
+
+    <section class="categories-section">
+        
+        <div class="category-block">
+            <div class="category-header">
+                <h3>Kitchen Tiles</h3>
+                <a href="kitchen.html" class="see-all-btn">See All</a>
+            </div>
+            <div class="horizontal-scroll">
+                <div class="tile-card">
+                    <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=400&q=80" alt="Kitchen Tile 1">
+                    <div class="tile-info"><p>Golden Vein Calacatta</p></div>
+                </div>
+                <div class="tile-card">
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=400&q=80" alt="Kitchen Tile 2">
+                    <div class="tile-info"><p>Obsidian Dark Matte</p></div>
+                </div>
+                <div class="tile-card">
+                    <img src="https://images.unsplash.com/photo-1565183997392-2f6f122e5912?auto=format&fit=crop&w=400&q=80" alt="Kitchen Tile 3">
+                    <div class="tile-info"><p>Ivory Travertine</p></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="category-block">
+            <div class="category-header">
+                <h3>Bedroom Tiles</h3>
+                <a href="#" class="see-all-btn">See All</a>
+            </div>
+            <div class="horizontal-scroll">
+                <div class="tile-card">
+                    <img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=400&q=80" alt="Bedroom Tile 1">
+                    <div class="tile-info"><p>Warm Silk Marble</p></div>
+                </div>
+                <div class="tile-card">
+                    <img src="https://images.unsplash.com/photo-1540518614846-7eded433c457?auto=format&fit=crop&w=400&q=80" alt="Bedroom Tile 2">
+                    <div class="tile-info"><p>Sandstone Elegance</p></div>
+                </div>
+                <div class="tile-card">
+                    <img src="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&w=400&q=80" alt="Bedroom Tile 3">
+                    <div class="tile-info"><p>Polished Concrete Lux</p></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="category-block">
+            <div class="category-header">
+                <h3>Sitting Room Tiles</h3>
+                <a href="#" class="see-all-btn">See All</a>
+            </div>
+            <div class="horizontal-scroll">
+                <div class="tile-card">
+                    <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=400&q=80" alt="Sitting Room Tile 1">
+                    <div class="tile-info"><p>Grand Versailles Marble</p></div>
+                </div>
+                <div class="tile-card">
+                    <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=400&q=80" alt="Sitting Room Tile 2">
+                    <div class="tile-info"><p>Royal Quartz Glaze</p></div>
+                </div>
+                <div class="tile-card">
+                    <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=400&q=80" alt="Sitting Room Tile 3">
+                    <div class="tile-info"><p>Antique Limestone</p></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="category-block">
+            <div class="category-header">
+                <h3>Bathroom Tiles</h3>
+                <a href="#" class="see-all-btn">See All</a>
+            </div>
+            <div class="horizontal-scroll">
+                <div class="tile-card">
+                    <img src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?auto=format&fit=crop&w=400&q=80" alt="Bathroom Tile 1">
+                    <div class="tile-info"><p>Carrara Pure White</p></div>
+                </div>
+                <div class="tile-card">
+                    <img src="https://images.unsplash.com/photo-1620626011761-996317b8d101?auto=format&fit=crop&w=400&q=80" alt="Bathroom Tile 2">
+                    <div class="tile-info"><p>Deep Ocean Emerald</p></div>
+                </div>
+                <div class="tile-card">
+                    <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=400&q=80" alt="Bathroom Tile 3">
+                    <div class="tile-info"><p>Statuario Minimalist</p></div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-logo">SABIAN STONES</div>
+            <div class="contact-details">
+                <p><i class="fa-solid fa-envelope"></i> info@sabianstones.com</p>
+                <p><i class="fa-solid fa-phone"></i> +1 (555) 123-4567</p>
+                <p><i class="fa-solid fa-location-dot"></i> 101 Luxury Design Way, Suite A</p>
+            </div>
+            <p class="copyright">&copy; 2026 Sabian Stones. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/15551234567?text=Hello%20Sabian%20Stones,%20I%20am%20interested%20in%20your%20premium%20floor%20tiling%20services." class="whatsapp-float" target="_blank">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById('sideNav').classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
